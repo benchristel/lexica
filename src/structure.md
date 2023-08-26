@@ -10,7 +10,7 @@ _monster, creature, god, ghost, mortal, snake, spider, wolf, tiger_
 
 _grass, river, snow, ice, sea, pool, forest, mire_
 
-_garden, fountain, street_
+**place:** _garden, fountain, street, land_
 
 _see, look, watch, hear, listen, feel_
 
@@ -26,11 +26,11 @@ _remain, dwell_
 
 _live, life, die, death, be born, birth_
 
-**time, when:** _hour, day, season_
+**time, when:** _hour, day, season, year_
 
 **have, use, with:** _carry, bear, wear, wield, hold, grasp, seize_
 
-**say:** _tell, call, ask, answer, word, name, voice, shout, cry, chant, sing, song, poem_
+**say, talk, speak:** _tell, call, ask, answer, word, name, voice, shout, cry, chant, sing, song, poem_
 
 _road, path, way_
 
@@ -48,16 +48,22 @@ _new, young, old, ancient_
 
 _mind, heart, soul, spirit_
 
+_light, dark_
+
+**day:** _sun_
+
+_night_
+
+_door, gate, open_
+
+**chance, luck, try:** _fall, dare_
+
 _turn
 still
-day
 door
 right
 stand
-light
 speak
-year
-try
 real
 city
 last
@@ -70,14 +76,11 @@ house
 work
 room
 run
-place
 woman
 world
 end
-night
 left
 war
-dark
 mean
 keep
 close
@@ -90,7 +93,6 @@ course
 point
 sit
 talk
-fall
 enough
 wall
 high

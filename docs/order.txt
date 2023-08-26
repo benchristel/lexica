@@ -1,3 +1,4 @@
 
 !unspecified
+fantasy-frequency-wordlist.html
 structure.html
