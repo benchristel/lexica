@@ -1,53 +1,53 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>fantasy-frequency-wordlist.html</title>
-  </head>
-  <body>
-    <pre><code>the
-be
-and
-of
-i
-a
-he
-to
-you
-it
-in
-they
-not
-have
-that/those
-she
-with
-we
-as
-for
-do
-but
-say
-on
-at
-this/these
-from
-all
-there
-one
-by
-what
-so
-some
-out
-go
-or
-will
-know
-see
-no
-up
-come
-if
+```
+the          an
+be           bos, bones
+and          ha, hag
+of           a
+i            me, my
+a            unn
+he           ev
+him          ev, va
+to           dhe
+you          ty, che, chy, hwi, hwei
+it           (see: he, she)
+in           yn, et
+they         i, jei
+not          na, nag, ny, nynj, nyns
+have         kavos, kawas
+that/those   (see: there)
+she          hi, hei
+her          hy
+with         gans
+we           ni, nei
+as           avel, mar, vel, dell, maga
+for          rag, dhe
+do           gul, gwul
+done         gwrys, gwres
+but          lemen, mes, bes, saw
+say          leverel, lawl
+say again    dasleverel
+on           war-rag, yn-rag, en-rag, a-dro dhe
+at           dhe, orth, worth, yn
+this/these   (see: here)
+here         ma, omma
+from         a, a-dhia
+all          oll, peub, pob
+there        na
+one          unn, onan
+by           erbynn, gans, war-bynn
+what         pan, pana, pandra, py, pe, pyth
+so           mar, rag henna, ytho
+some         neb, nebes, rann, re
+out          mes, yn-mes
+go           mones, mos
+or           bo, po
+will         bodh (n), mynnes (v), mennes
+know         aswon, godhvos, goffos
+see          gweles
+no           na, vyth
+up           war-vann, yn-bann, e'mann
+come         dones, dos
+if           a, mar, mara, maras, mars
 then
 into
 like
@@ -1504,9 +1504,4 @@ frame
 launch
 loyal
 pour
-</code></pre>
-    <nav>
-      <a href="index.html">Home</a> | <a href="index.html">Up</a> | <a href="structure.html" class="mdsite-prev-link">Prev</a> | <a href="kernewek.html" class="mdsite-next-link">Next</a>
-    </nav>
-  </body>
-</html>
+```
