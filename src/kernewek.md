@@ -48,31 +48,32 @@ no           na, vyth
 up           war-vann, yn-bann, e'mann
 come         dones, dos
 if           a, mar, mara, maras, mars
-then
-into
-like
-would
-could
-which
-look
-think
-when
-who
-can
-now
-make
-any
-man
-get
-time
-more
-about
-down
-take
-other
-back
-wear
-good
+then         nena, ytho, dhanna, ena
+into         yn
+like         kara (v), avel, vel, kepar
+would        (see: will)
+could        (see: can)
+which        may, mayth, pyneyl, peneyl
+look         mir, golok, tremmyn (n) mires (v)
+think        krysi, kreji, prederi, tybi
+when         p'eur, pana dermyn, pan
+who          neb a, piw, neb
+can          gallos (v)
+now          lemmyn, nans
+make         gwruthyl
+any          neb
+man          den, gour
+get          kavos, kawas
+time         prys, termyn
+a long time  hirneth
+more         moy
+about        a-dro, a-dro dhe
+down         war-woles, yn-nans, dhe'n dor
+take         kavos, kawas, dewis, kemeres, sesya
+other        aral, ken
+back         a-dhelergh, tre, keyn, kil, das-
+wear         gwiska
+good         da, mas
 only
 hand
 over
@@ -282,7 +283,7 @@ lord
 believe
 fight
 four
-deep
+deep         down
 next
 kill
 silent
