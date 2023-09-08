@@ -74,128 +74,130 @@ other        aral, ken
 back         a-dhelergh, tre, keyn, kil, das-
 wear         gwiska
 good         da, mas
-only
-hand
-over
-long
-than
-tell
-very
-way
-little
-before
-well
-life
-eye
-just
-here
-how
-thing
-through
-two
-even
-find
-give
-ask
-feel
-where
-after
-first
-face
-head
-again
-every
-seem
-own
-great
-turn
-still
-day
-off
-want
-away
-upon
-too
-door
-old
-move
-much
-must
-people
-thou
-never
-though
-right
-new
-stand
-light
-speak
-year
-dead/ death
-hear
-try
-real
-city
-last
-open
-begin
-might
-side
-why
-against
-another
-let
-house
-work
+only         unn, unnik, hepken, unsel, unweyth, lemen
+hand         dorn, leuv
+over         deu, diwedhys, dres, a-ugh dhe
+long         hir, pell
+than         vel, avel, es, ages
+tell         derivas, kedhla
+very         fest, pur
+way          fordh, for, gis, hyns, maner, trad
+little       boghes, byghan, munys, nebes
+before       a-dherag, kens, kyns
+well         ben fog, fenten (n), yn ta (adv), yagh
+life         bewnans
+eye          lagas
+just         marnas, nowydh, namnygen
+here         omma
+how          fatel, fatla
+thing        pyth, taklen, tra
+through      dres, der, dre, dredh
+two          dew, diw
+even         kompes, parow, hogen
+find         *have
+give         ri, rei
+ask          govyn, gofen (question), pysi, peji (request)
+feel         tava, klewes, omglewes
+where        ple, le may, le mayth
+after        war-lergh, wosa, woja
+first        kensa, kynsa
+face         bejeth, enep, fas, greuv, enebi (v)
+head         penn
+again        arta, das-
+every        kettep, pub
+seem         heveli
+own          perghenna, pywi, pewi
+great        bryntin, brentin, meur
+turn         stumm, torn, tro, treylya
+still        kosel, hogen, hwath, prest
+day          dy, de, dydh, dedh, jorna
+off          dhe-ves
+want         mynnes (v), edhom, odhom, fowt, hwans (n)
+away         dhe-ves, yn-kerdh, ker
+upon         re, war, yn-kerghyn
+too          keffrys, maga ta, re, ynwedh
+door         daras
+old          koth, hen
+move         gwaya, towl, movya, styrrya
+much         meur, lower, pals
+must         res
+people       pobel, tus
+thou         ty, che, chi
+never        nevra, bynner
+though       ytho, kyn, kynth
+right        gwir, dyghow, ewn, kompes, reyth
+new          nowydh, nowedh
+stand        sav (n), perthi, sevel (v)
+light        golow (n), skav (adj)
+speak        kewsel, kows, kowel
+year         bledhen
+dead         marow
+death        mernans, Ankow
+hear         klewes, klowes
+try          assay (n), assaya, hwilas, previ, tria (v)
+real         gwir
+city         cita, ker
+last         durya, pesya, pejya (v), diwettha (adj)
+open         ygeri, egeri (v), apert, gwastas, opyn, ygor (adj)
+begin        dalleth, dalla
+might        gallos, nerth
+side         amal, emlow, parth, tenewen, tu
+why          prag, praga
+against      erbynn, orth, war-bynn, worth
+another      aral, moy
+let          gasa, gara
+house        chi, treven (pl)
+work         gonis, gweyth, hwel, lavur, ober (n), gul hwel, oberi (v)
 should
-while
-room
-three
-run
-once
-place
-woman
-because
-world
-end
-mind
-most
-until
-nothing
-word
-arm
-night
-voice
-left
-around
-war
-hold
-dark
-mean
-keep
-close
-without
-call
-far
-moment
-yet
-small
-each
-many
-foot
-such
-toward
-course
-point
-sit
-talk
-fall
-enough
-wall
-high
-behind
-under
-friend
+while        pols, prys, tecken (n), ha, hedre (conj)
+room         roum, spas, stevel
+three        teyr, tri
+run          resek, ponya (v), resegva
+once         unweyth, eneth
+place        le, plas, tyller, teller (n), gorra, setya (v)
+woman        ben, benyn
+because      dre reson, rag, reson prag
+world        bys, nor
+end          diwedh, diwedhva, fin, penn (n), diwedha, finsya (v)
+mind         brys, bres (n), gorwitha, gwaytyas (v)
+most         moggha, moyha
+until        bys dhe, bys yn, erna, ernag, terebo, trelebba
+nothing      mann, tra vyth, tra veth
+word         ger
+arm          bregh, arv (n), arva (v)
+night        nos
+voice        lev
+left         gesys, gerys (< gasa "abandon"), kledh
+around       a-dro, a-dro dhe, yn-kerghyn
+war          bel, bresel, kas
+hold         dalghen (n), synsi, senji (v)
+dark         du, tewal, tewl
+mean         menya, styrya (v)
+keep         gwitha, maga, synsi, senji (v), tour (n)
+close        degea, neshe (v), klos, nes, ogas (adj)
+without      heb, di-
+call         galow, galwen, kri (n), gelwel, kria, kreia (v)
+far          pell
+moment       pols, polj, tecken
+yet          hwath
+small        byghan, bian, le, munys (adj)
+each         kettep, pub
+many         meur a
+foot         ben, troos
+such         pana, a'n par na
+toward       war-tu, troha, trohag
+course       hyns, kors, res, resegva, sand, steus
+point        bleyn, poynt, tron, bleynya, poyntya
+sit          esedha, 'sedha
+talk         kows, kewsel, klappya
+fall         kodh (n), kodha (v)
+autumn       kynnyav
+enough       lowr, luck
+wall         fos
+high         ughel
+behind       a-dhelergh, a-dryv, war-lergh
+under        war-woles, a-woles dhe, yn-dann
+friend       kothman, koweth, sos
 may
 need
 star
@@ -679,7 +681,7 @@ circle
 dust
 search
 deal
-lock
+lock         floren
 narrow
 thin
 history
