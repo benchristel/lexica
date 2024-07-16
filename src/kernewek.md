@@ -198,33 +198,33 @@ high         ughel
 behind       a-dhelergh, a-dryv, war-lergh
 under        war-woles, a-woles dhe, yn-dann
 friend       kothman, koweth, sos
-may
-need
-star
-land
-almost
-water
-body
-near
-bring
-follow
-child
-build
-put
-half
-human
-walk
-watch
-kind
-few
-(a)sleep
-god
-same
-sure
-sudden
-strange
-along
-grow
+may          re (optative), Me (month)
+need         edhom, odhom, res
+star         steren
+land         tir, bro, gwlas, pow
+almost       ogas, ogasti
+water        dowr (n), dowra (v)
+body         korf
+near         neshe (v), ogas
+bring        dri, drei
+follow       holya, sewya, omsewya
+child        flogh
+build        byldya, drehevel, gwruthyl
+put          gorra, pottya, settya
+half         hanter
+human        den
+walk         kerdh
+watch        mires orth (v), euryor (n)
+kind         eghen, kinda, sort (n), hegar, hweg (adj)
+few          nebes, boghes
+(a)sleep     koska
+god          duw
+same         keth
+sure         diogel, sur
+sudden       tromm
+strange      ankoth, koynt, estren
+along        a-hys, a-hes
+grow         tevi
 air
 lead
 ever
