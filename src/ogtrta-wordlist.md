@@ -68,3 +68,14 @@ Prepositions "to" and "from", and variants like "onto" and "from out of" can be 
 - `1SG` `1PL`
 - `2SG` `2PL`
 - `3SG` `3PL`
+
+## Morphological Tenses
+
+- `PROX` proximal tense, used for events in the present.
+- `DIST` distal tense, used for the past and for hypotheticals.
+- `AOR` aorist tense, used for general statements, for timeless truths, and when the speaker does not care to mark tense.
+
+## Periphrastic Tenses
+
+- perfect (using `ELA1` + infinitive)
+- future (using `ALL1` + infinitive)
