@@ -4,15 +4,17 @@ A checklist for my languages
 
 ## Determiners
 
-- singular definite article
-- plural definite article
-- negative quantifier ("no man")
+- `DEF` singular definite article
+- `DEFPL` plural definite article
+- `NEGDET` negative determiner ("no man")
 
 ## Plural Markers
 
+These are mostly used with indefinite nouns. When applied to definite nouns, they have a partitive meaning: "many of the inhabitants (plural)," "a few of the houses (paucal)," "all of the stars" (class plural)"
+
 - `#PL` Plural
-- `#PAU` Paucal?
-- `#COL` Collective?
+- `#PAU` Paucal
+- `#CLS` Class Plural
 
 ## Prepositions
 
@@ -36,6 +38,11 @@ A language should have some way of expressing all of these ideas. Each prepositi
 - `DISTR1` "per" / "for each"
 - `CMPR1` "like" / "as"
 - `PRIV1` "without"
+
+### Intransitive Prepositions
+
+- `up0`
+- `down0`
 
 ### Less Common Prepositions
 
@@ -68,6 +75,31 @@ Prepositions "to" and "from", and variants like "onto" and "from out of" can be 
 - `1SG` `1PL`
 - `2SG` `2PL`
 - `3SG` `3PL`
+
+## Demonstratives
+
+- `here0`
+- `there0`
+
+## Common Verbs
+
+- have &larr; `of1#PASS`
+- say
+- go
+- know
+- see
+- `like1` like (be fond of; the comparative preposition is `CMPR1`)
+- look
+- think
+- can
+- make
+- get
+- take
+- find
+- give
+- ask
+- feel
+- seem
 
 ## Morphological Tenses
 
