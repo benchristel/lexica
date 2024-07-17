@@ -1,6 +1,6 @@
 # The OGTRTA Wordlist of Unspecified Canonicity
 
-A checklist for your language
+A checklist for my languages
 
 ## Determiners
 
@@ -10,9 +10,9 @@ A checklist for your language
 
 ## Plural Markers
 
-- Plural
-- Paucal?
-- Collective?
+- `#PL` Plural
+- `#PAU` Paucal?
+- `#COL` Collective?
 
 ## Prepositions
 
@@ -22,35 +22,34 @@ Derived from Wikipedia's [List of Grammatical Cases](https://en.wikipedia.org/wi
 
 A language should have some way of expressing all of these ideas. Each preposition could probably have its own chapter in a grammar textbook.
 
-- "at" (the basic locative preposition) - "on/upon" can be merged with this.
-- "of" (possessive)
-- "to" (the basic allative preposition)
-- "from" (the basic allative preposition)
-- "in"
-- "with" (comitative)
-- "with" (instrumental)
-- "by" (agentive) - can be merged with "with"
-- "by" (limitative of time, e.g. "by 5:00")
-- "for" (dative) - can be merged with "to"
-- "during"
-- "per" / "for each"
-- "like" / "as"
-- "without"
+- `at1` or `LOC1` "at" (the basic locative preposition) - "on/upon" can be merged with this.
+- `of1` or `GEN1` "of" (genitive)
+- `to1` or `ALL1` "to" (the basic allative preposition)
+- `from1` or `ABL1` "from" (the basic ablative preposition)
+- `in1` or `INESS1` "in" (the basic inessive preposition)
+- `COM1` "with" (comitative)
+- `INS1` "with" (instrumental)
+- `AGT1` "by" (agentive) - can be merged with "with"
+- `LIM1` "by" (limitative of time, e.g. "by 5:00")
+- `DAT1` "for" (dative) - can be merged with "to"
+- `during1` "during"
+- `DISTR1` "per" / "for each"
+- `CMPR1` "like" / "as"
+- `PRIV1` "without"
 
 ### Less Common Prepositions
 
-- "between"
-- "after"
-- "about" / "concerning"
-- "next to" / "beside"
-- "in front of" / "before"
-- "after" / "behind"
-- "touching"
-- "under"
-- "over"
-- "near"
-- "out of"
-- "through" / "via"
+- `between1` "between"
+- `touch1` "touching"
+- "about" / "concerning" - can be merged with "touching"
+- `beside1` "next to" / "beside"
+- `before1` "in front of" / "before"
+- `behind1` "after" / "behind"
+- `under1` "under"
+- `over1` "over"
+- `near1` "near"
+- `ELA1` "out of" (elative)
+- `PERL1` "through" / "via"
 - "according to"
 - "because of"
 - "for want of"
@@ -60,7 +59,7 @@ A language should have some way of expressing all of these ideas. Each prepositi
 
 ### Notes
 
-Prepositions "to" and "from", and variants like "onto" and "from out of" can be replaced by inchoative and cessastive inflections of other prepositions. E.g. "to" can be `at#INCHO`. "for" (dative) can be `of#INCHO`.
+Prepositions "to" and "from", and variants like "onto" and "from out of" can be replaced by inchoative and cessastive inflections of other prepositions. E.g. "to" can be `at1#INCH`. "for" (dative) can be `of1#INCH`.
 
 </details>
 
