@@ -34,6 +34,7 @@ A language should have some way of expressing all of these ideas. Each prepositi
 - `AGT1` "by" (agentive) - can be merged with "with"
 - `LIM1` "by" (limitative of time, e.g. "by 5:00")
 - `DAT1` "for" (dative) - can be merged with "to"
+- `BEN1` "for" (benefactive)
 - `during1` "during"
 - `DISTR1` "per" / "for each"
 - `CMPR1` "like" / "as"
@@ -41,8 +42,9 @@ A language should have some way of expressing all of these ideas. Each prepositi
 
 ### Intransitive Prepositions
 
-- `up0`
-- `down0`
+- `up0` &larr; `above1#MID`
+- `down0` &larr; `below1#MID`
+- `away0`, `off0` &larr; `from1#MID`
 
 ### Less Common Prepositions
 
@@ -100,6 +102,16 @@ Prepositions "to" and "from", and variants like "onto" and "from out of" can be 
 - ask
 - feel
 - seem
+- turn
+- want
+- stand
+- die
+- hear
+- try
+- last `endure0`
+- open
+- begin
+- let `allow1`
 
 ## Morphological Tenses
 
