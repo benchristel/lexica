@@ -113,6 +113,10 @@ Prepositions "to" and "from", and variants like "onto" and "from out of" can be 
 - begin
 - let `allow1`
 
+## Negation
+
+- `#NEG`
+
 ## Morphological Tenses
 
 - `PROX` proximal tense, used for events in the present.
@@ -123,3 +127,10 @@ Prepositions "to" and "from", and variants like "onto" and "from out of" can be 
 
 - perfect (using `ELA1` + infinitive)
 - future (using `ALL1` + infinitive)
+
+## Valence-Changing
+
+- `#MID` removes the complement slot of a valence-1 predicate.
+- `#PASS` swaps the subject and first complement slots.
+- `#MIDPASS` removes the subject and promotes the first complement to subject.
+- `#CAUS` demotes the subject to first complement, increasing valence by 1, and adds a new subject.
