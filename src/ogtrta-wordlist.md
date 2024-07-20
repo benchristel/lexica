@@ -1,6 +1,6 @@
-# The OGTRTA Wordlist of Unspecified Canonicity
+# The OGTRTA Instruction Set Architecture
 
-A checklist for my languages
+A specification for a class of languages
 
 ## Determiners
 
