@@ -76,42 +76,50 @@ Prepositions "to" and "from", and variants like "onto" and "from out of" can be 
 
 - `1SG` `1PL`
 - `2SG` `2PL`
-- `3SG` `3PL`
+- `3SGAN` `3PLAN` - animate 3rd person
+- `3SGINAN` `3PLINAN` - inanimate 3rd person
 
 ## Demonstratives
 
 - `here0`
 - `there0`
 
-## Common Verbs
+## Atomic Verbs
 
-- have &larr; `of1#PASS`
-- say
-- go
-- know
-- see
+- `say0`
+- `go0`
+- `know1`
+- `see1`
 - `like1` like (be fond of; the comparative preposition is `CMPR1`)
-- look
-- think
-- can
-- make
-- get
-- take
-- find
-- give
-- ask
+- `look1`
+- `think1`
+- `can1`
+- `make1`
+- `get1`
+- `be1`
+- `take`
+- `find1`
+- `ask2` - 1: askee, 2: thing requested
+- `perceive2` - 1: thing perceived, 2: quality
 - feel
-- seem
 - turn
 - want
 - stand
 - die
 - hear
 - try
-- last `endure0`
 - open
 - begin
 - let `allow1`
+
+## Derived Verbs
+
+- `have1` &larr; `of1#PASS`
+- tell &larr; `give2 <someone> know1#INF`
+- `become1` &larr; `be1#INCH`
+- give &larr; `of1#CAUS` or `have1#CAUS`
+- last `endure0` &larr; `endure1#MID`
+- seem, appear &larr; `perceive2#PASS`
 
 ## Negation
 
@@ -125,12 +133,28 @@ Prepositions "to" and "from", and variants like "onto" and "from out of" can be 
 
 ## Periphrastic Tenses
 
-- perfect (using `ELA1` + infinitive)
-- future (using `ALL1` + infinitive)
+- `PRF` perfect (&larr; `ELA1` + infinitive)
+- `FUT` future (&larr; `ALL1` + infinitive)
+
+## Aspects
+
+- `PROG` progressive (&larr; `LOC1` + infinitive)
 
 ## Valence-Changing
 
-- `#MID` removes the complement slot of a valence-1 predicate.
+- `#MID` removes all complement slots.
 - `#PASS` swaps the subject and first complement slots.
 - `#MIDPASS` removes the subject and promotes the first complement to subject.
 - `#CAUS` demotes the subject to first complement, increasing valence by 1, and adds a new subject.
+
+## Valence Restoration
+
+`#MID` removes all complement slots, but sometimes you don't want that; you want to keep one of the complements of a valence-2 predicate but remove the other. The way to accomplish that is via **valence restoration**.
+
+Each predicate has a lexically-determined mapping from slot indices to prepositions that restore those slots. E.g. here `ABL1` is used to restore slot 1 of `ask2`.
+
+- `1SG PROX FUT ask2#MID ABL1 3SGAN` "I'll ask them."
+
+To restore slot 2, you'd have to use `ALL1`:
+
+- `1SG PROX FUT ask2#MID ALL1 3SGINAN` "I'll ask for it."
