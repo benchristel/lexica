@@ -76,8 +76,8 @@ Prepositions "to" and "from", and variants like "onto" and "from out of" can be 
 
 - `1SG` `1PL`
 - `2SG` `2PL`
-- `3SGAN` `3PLAN` - animate 3rd person
-- `3SGINAN` `3PLINAN` - inanimate 3rd person
+- `3ANSG` `3ANPL` - animate 3rd person
+- `3INANSG` `3INANPL` - inanimate 3rd person
 
 ## Demonstratives
 
