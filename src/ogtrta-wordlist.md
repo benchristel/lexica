@@ -153,8 +153,12 @@ Prepositions "to" and "from", and variants like "onto" and "from out of" can be 
 
 Each predicate has a lexically-determined mapping from slot indices to prepositions that restore those slots. E.g. here `ABL1` is used to restore slot 1 of `ask2`.
 
-- `1SG PROX FUT ask2#MID ABL1 3SGAN` "I'll ask them."
+- `1SG PROX FUT ask2#MID ABL1 3ANSG` "I'll ask them."
 
 To restore slot 2, you'd have to use `ALL1`:
 
-- `1SG PROX FUT ask2#MID ALL1 3SGINAN` "I'll ask for it."
+- `1SG PROX FUT ask2#MID ALL1 3INANSG` "I'll ask for it."
+
+Valence restoration is also useful when you want to swap the complements of a valence-2 predicate:
+
+- `1SG PROX FUT ask2#MID ALL1 3INANSG ABL1 3ANSG` "I'll ask for it from them."
