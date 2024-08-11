@@ -162,3 +162,47 @@ To restore slot 2, you'd have to use `ALL1`:
 Valence restoration is also useful when you want to swap the complements of a valence-2 predicate:
 
 - `1SG PROX FUT ask2#MID ALL1 3INANSG ABL1 3ANSG` "I'll ask for it from them."
+
+## Part-of-Speech-Changing
+
+### Nominalization
+
+- `#INF` - nominalizes a predicate, keeping complement slots
+- `#GER` - nominalizes a predicate, dropping all complement slots
+- `NZ` - nominalizes a sentence
+
+`GEN1`/`of1` can be used to attach a subject to a nominalized predicate:
+
+- `1SG PROX want1 GEN1 2SG see1#INF 3INANSG` "I want you to see it"
+
+### Questions
+
+Interrogative sentences are NPs.
+
+- `whether`
+- `what`
+- `who`
+- `which1`
+- `how_condition` ("How are you?", "How is the course going?")
+- `how_degree` (`how_degree AOR tall0 ^Barack ^Obama` "How tall is Barack Obama?" = "To what degree is Barack Obama tall?")
+- `why`
+
+## Agents in non-finite clauses
+
+The semantic agents of a non-finite clause can be added as the complement of a modifier on the main predicate. This modifier is glossed `NFSBJ` (non-finite subject) but is typically realized as some other morpheme: either `of1` (in languages that [mark first modifiers](#first-modifier-marking)) or `ADV` (in languages with an [adverbial predicate](#adverbial-predicate)).
+
+- `3ANSG PROX bring1 3INANSG` "He brings it." &rarr; `1SG PROX want1 NFSBJ 3ANSG bring1#INF 3INANSG`
+
+## Modifiers on predicates
+
+Modifier phrases can attach not only to nouns, but to predicates. In complex sentences, this can create undesirable ambiguity. OGTRTA languages use a couple different strategies to resolve the ambiguity.
+
+### First modifier marking
+
+- `1SG DIST eat1 quick0#M1` "I ate quickly"
+- `bear fierce0#M1 very0#M1` "a very fierce bear"
+
+### Adverbial Predicate
+
+- `1SG DIST eat1 ADV quick0#GER` "I ate quickly"
+- `bear fierce0 ADV very0#GER` "a very fierce bear"
