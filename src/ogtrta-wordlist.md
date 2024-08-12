@@ -63,8 +63,8 @@ A language should have some way of expressing all of these ideas. Each prepositi
 - "because of"
 - "for want of"
 - "instead of"
-- "for the benefit of"
-- "against" / "for the detriment of"
+- `BEN1` "for the benefit of"
+- `MAL1` "against" / "for the detriment of"
 
 ### Notes
 
@@ -179,30 +179,58 @@ Valence restoration is also useful when you want to swap the complements of a va
 
 Interrogative sentences are NPs.
 
-- `whether`
+Interrogative pronouns:
+
 - `what`
 - `who`
-- `which1`
+
+Interrogative determiners:
+
+- `which`
+- `whose`
+
+Interrogative particles:
+
+- `whether`
 - `how_condition` ("How are you?", "How is the course going?")
 - `how_degree` (`how_degree AOR tall0 ^Barack ^Obama` "How tall is Barack Obama?" = "To what degree is Barack Obama tall?")
+- `how_much`/`how_many`
 - `why`
+
+OGTRTA languages may front interrogative NPs, though some languages leave the pronoun in place. When a pronoun is fronted, a [resumptive pronoun](https://en.wikipedia.org/wiki/Resumptive_pronoun) `RES` is left in its place. Languages may realize the `RES` morpheme as [null](https://en.wikipedia.org/wiki/Null_morpheme).
+
+- `whose vassal 3ANSG FIN PERF kill1#INF RES` "Whose vassal did he kill?"
 
 ## Agents in non-finite clauses
 
 The semantic agents of a non-finite clause can be added as the complement of a modifier on the main predicate. This modifier is glossed `NFSBJ` (non-finite subject) but is typically realized as some other morpheme: either `of1` (in languages that [mark first modifiers](#first-modifier-marking)) or `ADV` (in languages with an [adverbial predicate](#adverbial-predicate)).
 
-- `3ANSG PROX bring1 3INANSG` "He brings it." &rarr; `1SG PROX want1 NFSBJ 3ANSG bring1#INF 3INANSG`
+- `3ANSG PROX bring1 3INANSG` "He brings it." &rarr; `1SG PROX want1 NFSBJ 3ANSG bring1#INF 3INANSG` "I want him to bring it."
 
 ## Modifiers on predicates
 
-Modifier phrases can attach not only to nouns, but to predicates. In complex sentences, this can create undesirable ambiguity. OGTRTA languages use a couple different strategies to resolve the ambiguity.
+Modifier phrases can attach to predicates as well as nouns. In complex sentences, this can create undesirable ambiguity. OGTRTA languages use a couple different strategies to resolve the ambiguity.
 
-### First modifier marking
+### Nearest modifier marking
 
-- `1SG DIST eat1 quick0#M1` "I ate quickly"
-- `bear fierce0#M1 very0#M1` "a very fierce bear"
+In languages that use the "nearest modifier" strategy, a modifier that immediately follows the head of its parent phrase is marked with an inflection `#M`. Often, this marking is an initial consonant mutation, but it does not have to be.
 
-### Adverbial Predicate
+- `1SG DIST eat0 quick0#M` "I ate quickly"
+- `bear fierce0#M very0#M` "a very fierce bear" — contrast with `bear fierce0#M very0`, which might mean "an actual, fierce bear."
 
-- `1SG DIST eat1 ADV quick0#GER` "I ate quickly"
-- `bear fierce0 ADV very0#GER` "a very fierce bear"
+In SOV/OVS languages, a modifier that immediately _precedes_ the head of its parent phrase gets the `#M` inflection.
+
+- `1SG quick0#M eat0 DIST` "I ate quickly"
+
+### Adverbial predicate
+
+In languages that use the "adverbial predicate" strategy, the only predicate that ever modifies another predicate directly is the one glossed `ADV1`. The complement of `ADV1` is typically a nominalized predicate:
+
+- `1SG DIST eat0 ADV1 quick0#GER` "I ate quickly"
+- `bear fierce0 ADV1 very0#GER` "a very fierce bear"
+
+However, the complement of `ADV1` might also be a noun in some cases:
+
+- `1SG DIST see1 3SG ADV1 thursday` "I saw it on Thursday"
+
+`ADV1` may be realized as another lexeme, e.g. `LOC1`.
