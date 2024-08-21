@@ -1,20 +1,73 @@
 # The OGTRTA Instruction Set Architecture
 
-A specification for a class of languages
+A specification for a class of languages.
+
+Gloss abbreviations are drawn from Wikipedia's [list of glossing abbreviations](https://en.wikipedia.org/wiki/List_of_glossing_abbreviations).
 
 ## Determiners
 
+### Articles
+
 - `DEF` singular definite article
 - `DEFPL` plural definite article
-- `NEGDET` negative determiner ("no man")
+
+### Quantifiers
+
+- `NEGDET` negative quantifier ("there are **no sheep** on the hill")
+- `every` universal quantifier ("**every sheep** is on the hill")
+
+### Interrogatives
+
+- `which`
+- `what_kind_of`
+- `how_much` (also used for "how many")
+
+### Words that aren't determiners
+
+Some types of words are determiners in English but not in OGTRTA. These include:
+
+- possessive pronouns ("my", "your")
+- demonstratives ("this (one)", "that (one)")
+
+These concepts are all expressed by **verbs** in OGTRTA.
+
+### Semantics
+
+OGTRTA employs determiners only in cases where the referent of a noun cannot be pinned down by [determining modifiers](#TODO). A phrase like "the bear" cannot be paraphrased by describing a _kind_ of bear — the same goes for "no bear" and "every bear".
+
+Possessives and demonstratives, on the other hand, _can_ be expressed as modifiers. Precedents exist in many natural languages: English ("for the sake **of them**"), Italian ("_la **mia** famiglia_"), and Welsh ("_y bore **'ma**_"), for instance. Note that in each of these cases, the modifier can coexist with the definite article.
+
+#### "every" / "all"
+
+- `1SG DIST see1 3ANPL be1#M every being` "I saw all of them" (lit: "I saw them every one")
 
 ## Plural Markers
 
-These are mostly used with indefinite nouns. When applied to definite nouns, they have a partitive meaning: "many of the inhabitants (plural)," "a few of the houses (paucal)," "all of the stars" (class plural)"
+The morphological plural markers are mostly used with indefinite nouns. When applied to definite nouns, they have a partitive meaning: "many of the inhabitants (plural)," "a few of the houses (paucal)," "all of the stars" (class plural)"
 
 - `#PL` Plural
 - `#PAU` Paucal
 - `#CLS` Class Plural
+
+There is a separate plural definite article for definite plural nouns without a partitive meaning:
+
+- `DEFPL tree` "the trees"
+
+This apparent complication is actually an elegant solution to an asymmetry: there can be no partitive plural form of an indefinite noun. For instance, we can say:
+
+- "I saw the trees"
+- "I saw (some) trees"
+- "I saw some of the trees"
+
+But not:
+
+- \*"I saw some of some trees"
+
+OGTRTA makes this restriction explicit in the syntax, by providing separate singular and plural definite articles, but no indefinite article. When combined with a morphological plural, the plural definite article has a partitive meaning. There is no way to get a partitive meaning from an indefinite form.
+
+- "I saw the trees" `1SG DIST see1 DEFPL tree`
+- "I saw (some) trees" `1SG DIST see1 tree#PL`
+- "I saw some of the trees" `1SG DIST see1 DEFPL tree#PL`
 
 ## Prepositions
 
@@ -194,10 +247,14 @@ Interrogative particles:
 - `whether`
 - `how_condition` ("How are you?", "How is the course going?")
 - `how_degree` (`how_degree AOR tall0 ^Barack ^Obama` "How tall is Barack Obama?" = "To what degree is Barack Obama tall?")
-- `how_much`/`how_many`
+  - also used for `how_much`/`how_many`
 - `why`
 
-OGTRTA languages may front interrogative NPs, though some languages leave the pronoun in place. When a pronoun is fronted, a [resumptive pronoun](https://en.wikipedia.org/wiki/Resumptive_pronoun) `RES` is left in its place. Languages may realize the `RES` morpheme as [null](https://en.wikipedia.org/wiki/Null_morpheme).
+An _interrogative NP_ is either an interrogative pronoun, or a noun with an interrogative determiner.
+
+TODO: replace interrogative determiners with predicates. Possessives and demonstratives aren't determiners, so why should `which` and `whose` be?
+
+OGTRTA languages may front interrogative NPs, though some languages leave them in place. When an interrogative NP is fronted, a [resumptive pronoun](https://en.wikipedia.org/wiki/Resumptive_pronoun) `RES` is left in its place. Languages may realize the `RES` morpheme as [null](https://en.wikipedia.org/wiki/Null_morpheme).
 
 - `whose vassal 3ANSG FIN PERF kill1#INF RES` "Whose vassal did he kill?"
 
