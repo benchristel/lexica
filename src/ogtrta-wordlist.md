@@ -4,12 +4,239 @@ A specification for a class of languages.
 
 Gloss abbreviations are drawn from Wikipedia's [list of glossing abbreviations](https://en.wikipedia.org/wiki/List_of_glossing_abbreviations).
 
+OGTRTA is a template for making constructed languages. The idea is that with a short wordlist and a few decisions about grammar, you can create a fully-functioning, self-consistent, complete, and _unique_ conlang, suitable for further elaboration.
+
+I created OGTRTA for my own use, because I suck at finishing conlang grammars. I wanted a way to create a conlang that was "complete" (if short on vocabulary) in a few minutes, so that most of the remaining work would be crafting the lexicon and tweaking the morphology. Essentially, I wanted the {{link terms/walking-skeleton}} pattern, but for conlangs instead of computer programs.
+
+However, in order to arrive at a system that would work, the way I had to develop OGTRTA was to create several actual (half-assed) conlangs, peruse grammars of natural languages, and then figure out what framework could produce them all. OGTRTA is not some pie-in-the-sky idea I dreamed up. It's derived from observations of actual languages both natural and artificial.
+
+OGTRTA comprises two parts: a syntax, and a set of glosses for about 50 morphemes. This document describes both parts, beginning with the syntax.
+
+## Syntax
+
+### Parts of speech
+
+OGTRTA recognizes five parts of speech:
+
+- nouns
+- verbs
+- determiners
+- pronouns
+- conjunctions
+
+**Nouns** are straightforward: a noun refers to a person, place, thing, or idea. However, **verbs** in OGTRTA are a little bit different from English verbs. OGTRTA has no adjectives or prepositions, so verbs fill the role of both.
+
+OGTRTA's **determiners** include words like articles (e.g. "the") and some interrogatives ("which", "whose").
+
+**Pronouns** function syntactically much like nouns, but have some restrictions. For example, they cannot take determiners. Also, their inflectional morphology may differ from that of ordinary nouns (exactly _how_ it differs is left up to the individual language).
+
+**Conjunctions** connect syntax nodes (phrases and sentences) as peers — i.e. without subordinating one node to the other. Conjunctions include such useful words as "and", "or", "while", "because", "so", and so on.
+
+Of these parts of speech, nouns and verbs are "open classes," meaning that speakers of a language innovate and borrow new ones all the time. Determiners, pronouns, and conjunctions are "closed classes." Innovation in these parts of speech happens very rarely.
+
+OGTRTA aims to provide languages with a complete set of determiners, pronouns, and conjunctions at the outset, so the only part of the lexicon you will need to design yourself is the nouns and verbs.
+
+### Word order
+
+The basic word order in OGTRTA is **VOS** or verb-object-subject. Wait, come back! The subject is usually fronted via a transformation, so **SVO** word order is more common in actual sentences. Additionally, OGTRTA is a reversible syntax: the right-hand side of all the syntax production rules can be reversed, producing an **SOV** language. Backing the subject of an SOV sentence produces **OVS**.
+
+The other possible word orders, **VSO** and **OSV**, are not directly supported. If you really want to make a VSO language with OGTRTA, you can probably figure something out, but this guide will not describe how to do it.
+
+To keep things straightforward, this guide assumes a verb-object word order, and all the examples will use that syntax.
+
+### Production rules, level 1
+
+The complete set of production rules for OGTRTA is complex, so rather than dump them on you all at once, they will be introduced in stages. This section describes "level 1" syntax—the most minimal, stripped-down version of the grammar.
+
+A **sentence** `S` consists of a **verb phrase** `VP` and a subject **noun phrase** `NP`.
+
+```
+S -> VP NP
+```
+
+The order of nodes in a sentence can also be reversed:
+
+```
+S -> NP VP
+```
+
+A sentence can also be composed of multiple sentences, using a conjunction:
+
+```
+S -> S CONJ S
+```
+
+A **verb phrase** consists of a **verb** `V` with valence `n` (represented `V/n`), followed by n **complement noun phrases** (represented `NP{n}`).
+
+```
+VP -> V/n NP{n}
+```
+
+What's **valence**, you ask? The valence of a verb is the number of noun phrases you need to put after the verb to make it a complete "thought." For example, "Rachel skydives" is a complete thought, meaning "skydives" has a valence of 0, but "Rachel pokes" is not complete — "pokes" has valence 1 and requires an object.
+
+Note that _valence is a grammatical concept, not a logical one_. In English, a verb like "eat" can have either valence 1 or valence 0, and that's perfectly fine. You can say "I eat", or "I eat beans" and both are grammatical. Your language might work similarly. In any case, valence is always about what _words_ are required to be there, not about whether the action represented by the verb conceptually has a direct object or not. This clean separation between semantics and syntax is what enables OGTRTA to work.
+
+A **noun phrase** consists of a noun, optionally preceded by a determiner:
+
+```
+NP -> DET? N
+```
+
+A noun phrase can also be composed of other noun phrases, using a conjunction:
+
+```
+NP -> NP CONJ NP
+```
+
+Or it can just be a pronoun:
+
+```
+NP -> PRN
+```
+
+With just these syntax rules, we can already construct sentences of arbitrary length and complexity. However, you probably sense that something's missing. Where are the adjectives?
+
+### Production rules, level 2
+
+Recall that OGTRTA does not have adjectives as a separate lexical class. However, its syntax does have a concept of **modifiers**. A verb phrase can modify a noun by following it:
+
+```
+NP -> DET? N VP
+```
+
+In fact, a noun can be modified by any number of VPs (zero or more), represented by `VP*`:
+
+```
+NP -> DET? N VP*
+```
+
+Words that we think of as adjectives in English are zero-valence verbs in OGTRTA. 
+
+A noun phrase that includes a determiner can have zero-valence modifiers between the determiner and the noun:
+
+```
+NP -> DET V_0* N VP*
+```
+
+This rule is optional, though, and individual languages can safely leave it out.
+
+Verbs can also have modifiers. The syntax is slightly more complex because of the presence of complements:
+
+```
+VP -> V_n VP* NP{n} VP*
+```
+
+That is, a verb's modifiers should go before all the complements, or after all the complements. Putting them between the complements would be confusing! (Actually, this isn't a hard and fast rule; your language can certainly break it. But writing down that more general rule in formal language would be hard, and I feel like conlanging is hard enough already.)
+
+### Production rules, level 3
+
+Now we come to the interface between syntax and morphology. The nodes in our syntax tree can have "tags," which can be "inherited" by descendent nodes. Depending on the specific language, tags on a node can influence what morphological affixes are allowed or required. In the syntax metalanguage, I'll represent these tags as a letter after a dot, like `.x`.
+
+So, starting back at the beginning: A sentence has a **subject noun phrase** (`NP.s`) and a **finite verb phrase** (`VP.f`).
+
+```
+S -> VP.f NP.s
+S -> NP.s VP.f
+```
+
+Any tags on a verb phrase are inherited by its head verb. Here I use `.x` to mean "any tags that are present." The modifiers of a phrase get a "modifier tag" `.m`, and the complements of a verb may get a "case tag" `.c`, the specific nature of which is determined by the lexical verb. The modifiers of a verb phrase also get an "adverbial tag" `.a`.
+
+```
+VP.x -> V_n.x VP.m.a* NP.c{n} VP.m.a*
+```
+
+That rule is pretty complicated, but I promise it's the worst one. A conjoined verb phrase passes its tags to both conjuncts:
+
+```
+VP.x -> VP.x CONJ VP.x
+```
+
+Same with a conjoined noun phrase:
+
+```
+NP.x -> NP.x CONJ NP.x
+```
+
+The head noun of an NP inherits the tags:
+
+```
+NP.x -> PRN.x
+NP.x -> DET? N.x VP.m*
+NP.x -> DET V_0.m* N.x VP.m*
+```
+
+And that's it! That's the entire syntax of OGTRTA.
+
+All together now:
+
+```
+S -> VP.f NP.s
+S -> NP.s VP.f
+S -> S CONJ S
+VP.x -> V_n.x VP.m.a* NP.c{n} VP.m.a*
+VP.x -> VP.x CONJ VP.x
+NP.x -> PRN.x
+NP.x -> DET? N.x VP.m*
+NP.x -> DET V_0.m* N.x VP.m*
+NP.x -> NP.x CONJ NP.x
+```
+
+Get that printed on a t-shirt. I'm sure it'll be a hit at parties.
+
+### Production rules appendix: agreement tags
+
+As described above, the syntax of OGTRTA can do many things, but it has one major shortcoming: it cannot represent any constraints on _agreement_ between words. That is, the syntax cannot require a verb to agree in plurality with its subject (as in English "he swims" vs. "they swim"), or a modifier to agree in gender with the noun it's modifying (as in Spanish "el poema bonito" vs. "la casa bonita").
+
+All is not lost, however: we can use tags to represent agreement constraints between nodes. It's not possible to fully specify a formal system for doing this, because it's very dependent on the individual language, but I'll give some examples.
+
+First example: perhaps you want your language to have masculine and feminine articles, like Spanish does, and you want to require that nouns must agree in gender with their article. Here's how you might do that with `.m` and `.f` tags:
+
+```
+NP.m -> DET.m N.m VP*
+NP.f -> DET.f N.f VP*
+```
+
+These rules say, basically, that a noun phrase can be either masculine or feminine. Masculine NPs have to have a masculine determiner and a masculine noun, while feminine NPs have to have a feminine determiner and a feminine noun.
+
+Maybe you also want to head-mark the gender of VP constituents on the verb, as in Swahili. Here's how you'd do that, with tags `ms` and `fs` for the gender of the subject and `m1` and `f1` for the gender of the first complement.
+
+```
+S.ms.m1 -> VP.ms.m1 NP.ms
+S.ms.f1 -> VP.ms.f1 NP.ms
+S.fs.m1 -> VP.fs.m1 NP.fs
+S.fs.f1 -> VP.fs.f1 NP.fs
+VP.ms.m1 -> V_1.ms.m1 VP* NP.m1 VP*
+VP.ms.f1 -> V_1.ms.f1 VP* NP.f1 VP*
+VP.fs.m1 -> V_1.fs.m1 VP* NP.m1 VP*
+VP.fs.f1 -> V_1.fs.f1 VP* NP.f1 VP*
+```
+
+As you can see, this gets more complicated the more genders and complements you have to deal with. But in theory, this system is capable of expressing all the possible combinations.
+
+This is a sketch, not a formal description. It's hard to describe agreement tags precisely in any system less powerful than an actual programming language. But hopefully you get the idea. If not, don't worry about it. You don't need to know anything about agreement tags unless you, like me, need the security blanket of formality to keep those evil, messy WORDS safely away from you.
+
 ## Determiners
 
 ### Articles
 
 - `DEF` singular definite article
 - `DEFPL` plural definite article
+
+For indefinite nouns, number is expressed periphrastically, with modifiers.
+
+This difference in number marking strategies stems from an observation about
+how number is used in practice. In many indefinite noun phrases, the noun is
+effectively numberless:
+
+- "Are there **sheep** on the hill?"
+- "Everyone should send their **children** to school."
+
+These examples are morphologically plural (in English) but the actual
+referents of the highlighted nouns might be singular or plural depending
+on the circumstances of the utterance.
+
+However, a definite noun cannot be numberless, because a definite noun
+always refers to a specific set of things.
 
 ### Quantifiers
 
@@ -37,37 +264,15 @@ OGTRTA employs determiners only in cases where the referent of a noun cannot be 
 
 Possessives and demonstratives, on the other hand, _can_ be expressed as modifiers. Precedents exist in many natural languages: English ("for the sake **of them**"), Italian ("_la **mia** famiglia_"), and Welsh ("_y bore **'ma**_"), for instance. Note that in each of these cases, the modifier can coexist with the definite article.
 
-#### "every" / "all"
+### "every" / "all" / "none" as modifiers
 
-- `1SG DIST see1 3ANPL be1#M every being` "I saw all of them" (lit: "I saw them every one")
+Since determiners cannot be used with pronouns, a periphrastic construction is needed to express e.g. "all of them".
 
-## Plural Markers
+- `1SG DIST see1 every being of1#M 3ANPL` "I saw all of them" (lit: I saw every one of them)
 
-The morphological plural markers are mostly used with indefinite nouns. When applied to definite nouns, they have a partitive meaning: "many of the inhabitants (plural)," "a few of the houses (paucal)," "all of the stars" (class plural)"
+`NEGDET` uses a different paraphrase:
 
-- `#PL` Plural
-- `#PAU` Paucal
-- `#CLS` Class Plural
-
-There is a separate plural definite article for definite plural nouns without a partitive meaning:
-
-- `DEFPL tree` "the trees"
-
-This apparent complication is actually an elegant solution to an asymmetry: there can be no partitive plural form of an indefinite noun. For instance, we can say:
-
-- "I saw the trees"
-- "I saw (some) trees"
-- "I saw some of the trees"
-
-But not:
-
-- \*"I saw some of some trees"
-
-OGTRTA makes this restriction explicit in the syntax, by providing separate singular and plural definite articles, but no indefinite article. When combined with a morphological plural, the plural definite article has a partitive meaning. There is no way to get a partitive meaning from an indefinite form.
-
-- "I saw the trees" `1SG DIST see1 DEFPL tree`
-- "I saw (some) trees" `1SG DIST see1 tree#PL`
-- "I saw some of the trees" `1SG DIST see1 DEFPL tree#PL`
+- `1SG DIST see1 NEGDET being of1#M 3ANPL` "I saw none of them"
 
 ## Prepositions
 
@@ -202,31 +407,35 @@ Prepositions "to" and "from", and variants like "onto" and "from out of" can be 
 
 ## Valence Restoration
 
-`#MID` removes all complement slots, but sometimes you don't want that; you want to keep one of the complements of a valence-2 predicate but remove the other. The way to accomplish that is via **valence restoration**.
+`#MID` removes all complement slots, but sometimes you don't want that; you want to keep one of the complements of a valence-2 verb but remove the other. The way to accomplish that is via **valence restoration**.
 
-Each predicate has a lexically-determined mapping from slot indices to prepositions that restore those slots. E.g. here `ABL1` is used to restore slot 1 of `ask2`.
+Each verb has a lexically-determined mapping from slot indices to verbs that restore those slots when used as modifiers. E.g. here `ABL1` is used to restore slot 1 of `ask2`.
 
-- `1SG PROX FUT ask2#MID ABL1 3ANSG` "I'll ask them."
+- `1SG PROX FUT ask2#MID ABL1#M 3ANSG` "I'll ask them."
 
 To restore slot 2, you'd have to use `ALL1`:
 
-- `1SG PROX FUT ask2#MID ALL1 3INANSG` "I'll ask for it."
+- `1SG PROX FUT ask2#MID ALL1#M 3INANSG` "I'll ask for it."
 
-Valence restoration is also useful when you want to swap the complements of a valence-2 predicate:
+Valence restoration is also useful when you want to swap the complements of a valence-2 verb:
 
-- `1SG PROX FUT ask2#MID ALL1 3INANSG ABL1 3ANSG` "I'll ask for it from them."
+- `1SG PROX FUT ask2#MID ALL1#M 3INANSG ABL1 3ANSG` "I'll ask for it from them."
+
+Modifiers used for valence restoration never take the [adverbial particle](#adverbial-particle).
 
 ## Part-of-Speech-Changing
 
 ### Nominalization
 
-- `#INF` - nominalizes a predicate, keeping complement slots
-- `#GER` - nominalizes a predicate, dropping all complement slots
+- `#INF` - nominalizes a verb, keeping complement slots
+- `#GER` - nominalizes a verb, dropping all complement slots
 - `NZ` - nominalizes a sentence
 
-`GEN1`/`of1` can be used to attach a subject to a nominalized predicate:
+`GEN1`/`of1` can be used to attach a subject to a nominalized verb:
 
-- `1SG PROX want1 GEN1 2SG see1#INF 3INANSG` "I want you to see it"
+- `1SG PROX want1 GEN1#M 2SG see1#INF 3INANSG` "I want you to see it"
+
+When used in this way, `GEN1` never takes the [adverbial particle](#adverbial-particle).
 
 ### Questions
 
@@ -279,15 +488,13 @@ In SOV/OVS languages, a modifier that immediately _precedes_ the head of its par
 
 - `1SG quick0#M eat0 DIST` "I ate quickly"
 
-### Adverbial predicate
+### Adverbial particle
 
-In languages that use the "adverbial predicate" strategy, the only predicate that ever modifies another predicate directly is the one glossed `ADV1`. The complement of `ADV1` is typically a nominalized predicate:
+In languages that use the "adverbial particle" strategy, a verb that modifies another optionally has the particle `ADV` placed before it.
 
-- `1SG DIST eat0 ADV1 quick0#GER` "I ate quickly"
-- `bear fierce0 ADV1 very0#GER` "a very fierce bear"
+- `1SG DIST eat0 ADV quick0` "I ate quickly"
+- `bear fierce0 ADV very0` "a very fierce bear"
 
-However, the complement of `ADV1` might also be a noun in some cases:
+`ADV` might also precede a noun in some cases:
 
-- `1SG DIST see1 3SG ADV1 thursday` "I saw it on Thursday"
-
-`ADV1` may be realized as another lexeme, e.g. `LOC1`.
+- `1SG DIST see1 3SG ADV thursday` "I saw it on Thursday"
