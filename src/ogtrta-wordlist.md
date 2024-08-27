@@ -1,5 +1,7 @@
 # The OGTRTA Instruction Set Architecture
 
+Current version: 0.3 (beta)
+
 A specification for a class of languages.
 
 Gloss abbreviations are drawn from Wikipedia's [list of glossing abbreviations](https://en.wikipedia.org/wiki/List_of_glossing_abbreviations).
@@ -8,7 +10,9 @@ OGTRTA is a template for making constructed languages. The idea is that with a s
 
 I created OGTRTA for my own use, because I suck at finishing conlang grammars. I wanted a way to create a conlang that was "complete" (if short on vocabulary) in a few minutes, so that most of the remaining work would be crafting the lexicon and tweaking the morphology. Essentially, I wanted the {{link terms/walking-skeleton}} pattern, but for conlangs instead of computer programs.
 
-However, in order to arrive at a system that would work, the way I had to develop OGTRTA was to create several actual (half-assed) conlangs, peruse grammars of natural languages, and then figure out what framework could produce them all. OGTRTA is not some pie-in-the-sky idea I dreamed up. It's derived from observations of actual languages both natural and artificial.
+However, in order to arrive at a system that would work, the way I had to develop OGTRTA was to create several actual (half-finished) conlangs, peruse grammars of natural languages, and then figure out what framework could produce them all. OGTRTA is not some pie-in-the-sky idea I dreamed up. It's derived from observations of actual languages both natural and artificial.
+
+OGTRTA is not right for every language. For example, if you want a language with very free word order, tons of noun classes, and head-marking, OGTRTA is probably not a good choice — but also, you don't _need_ something like OGTRTA for a language like that, because the main problem OGTRTA solves is syntax. On the other hand, if you want a language with fairly fixed word order, which is either consistently head-initial or consistently head-final, OGTRTA might work well for you.
 
 OGTRTA comprises two parts: a syntax, and a set of glosses for about 50 morphemes. This document describes both parts, beginning with the syntax.
 
@@ -38,7 +42,7 @@ OGTRTA aims to provide languages with a complete set of determiners, pronouns, a
 
 ### Word order
 
-The basic word order in OGTRTA is **VOS** or verb-object-subject. Wait, come back! The subject is usually fronted via a transformation, so **SVO** word order is more common in actual sentences. Additionally, OGTRTA is a reversible syntax: the right-hand side of all the syntax production rules can be reversed, producing an **SOV** language. Backing the subject of an SOV sentence produces **OVS**.
+The basic word order in declarative sentences in OGTRTA is **VOS** or verb-object-subject. Wait, come back! The subject is usually fronted via a transformation, so **SVO** word order is more common in actual sentences. Additionally, OGTRTA is a reversible syntax: the right-hand side of all the syntax production rules can be reversed, producing an **SOV** language. Backing the subject of an SOV sentence produces **OVS**.
 
 The other possible word orders, **VSO** and **OSV**, are not directly supported. If you really want to make a VSO language with OGTRTA, you can probably figure something out, but this guide will not describe how to do it.
 
@@ -48,22 +52,37 @@ To keep things straightforward, this guide assumes a verb-object word order, and
 
 The complete set of production rules for OGTRTA is complex, so rather than dump them on you all at once, they will be introduced in stages. This section describes "level 1" syntax—the most minimal, stripped-down version of the grammar.
 
-A **sentence** `S` consists of a **verb phrase** `VP` and a subject **noun phrase** `NP`.
+A sentence is either **declarative** (making a statement about _what is the case_), **imperative** (issuing a command or request) or **interrogative** (asking a question). OGTRTA views interrogative sentences as a special case of imperatives, since they're making a request for information. So there are only two types of sentences in the formal grammar: declarative sentences, abbreviated `DS` and interrogative/imperative sentences, abbreviated `IS`.
+
+Here is how we represent the idea that a sentence `S` is either a `DS` or `IS`:
 
 ```
-S -> VP NP
+S -> DS
+S -> IS
+```
+
+A declarative **sentence** `DS` consists of a **verb phrase** `VP` followed by a subject **noun phrase** `NP`.
+
+```
+DS -> VP NP
 ```
 
 The order of nodes in a sentence can also be reversed:
 
 ```
-S -> NP VP
+DS -> NP VP
 ```
 
-A sentence can also be composed of multiple sentences, using a conjunction:
+A sentence can be composed of multiple sentences, using a conjunction:
 
 ```
-S -> S CONJ S
+DS -> S CONJ S
+```
+
+An interrogative or imperative sentence `IS` is a single noun phrase (see the sections on [imperatives](#imperatives) and [interrogatives](#interrogatives) for how this works).
+
+```
+IS -> NP
 ```
 
 A **verb phrase** consists of a **verb** `V` with valence `n` (represented `V/n`), followed by n **complement noun phrases** (represented `NP{n}`).
@@ -72,14 +91,18 @@ A **verb phrase** consists of a **verb** `V` with valence `n` (represented `V/n`
 VP -> V/n NP{n}
 ```
 
-What's **valence**, you ask? The valence of a verb is the number of noun phrases you need to put after the verb to make it a complete "thought." For example, "Rachel skydives" is a complete thought, meaning "skydives" has a valence of 0, but "Rachel pokes" is not complete — "pokes" has valence 1 and requires an object.
+What's **valence**, you ask? The valence of a word is the number of noun phrases you need to put after the word to make it a complete "thought." For example, "Rachel skydives" is a complete thought, because "skydives" has a valence of 0, but "Rachel pokes" is not complete — "pokes" has valence 1 and requires an object. The noun phrases required by the valence of a word are called the word's _complements_.
 
-Note that _valence is a grammatical concept, not a logical one_. In English, a verb like "eat" can have either valence 1 or valence 0, and that's perfectly fine. You can say "I eat", or "I eat beans" and both are grammatical. Your language might work similarly. In any case, valence is always about what _words_ are required to be there, not about whether the action represented by the verb conceptually has a direct object or not. This clean separation between semantics and syntax is what enables OGTRTA to work.
+All words in OGTRTA have a valence. Most nouns have a valence of 0, but nouns derived from verbs (_infinitives_) often have a valence greater than 0. Individual languages might also choose to give other nouns a nonzero valence, e.g. kinship terms. A word like "daughter" might require a complement specifying who the referent is the daughter of.
 
-A **noun phrase** consists of a noun, optionally preceded by a determiner:
+Note that _valence is a grammatical concept, not a logical one_. In English, a verb like "eat" can have either valence 1 or valence 0, and that's perfectly fine. You can say "I eat", or "I eat beans" and both are grammatical. In OGTRTA, every word _must_ have a well-defined valence when it is actually used: there is no such thing as an optional complement. However, OGTRTA languages often have [morphological affixes to modify the valence](#valence-changing) of a word, so your language can have both `eat/1` and `eat/0`. The valence-changing affixes can also be realized as [null morphemes](#null-morphemes), so `eat/1` and `eat/0` need not have distinct forms.
+
+In any case, the important thing to understand is that valence is always about what _words_ are required to be there, not about whether the action represented by a verb conceptually has a direct object or not.
+
+A **noun phrase** consists of a noun `N` with valence `n`, followed by its `n` complements. The noun is optionally preceded by a determiner.
 
 ```
-NP -> DET? N
+NP -> DET? N/n NP{n}
 ```
 
 A noun phrase can also be composed of other noun phrases, using a conjunction:
@@ -94,20 +117,33 @@ Or it can just be a pronoun:
 NP -> PRN
 ```
 
-With just these syntax rules, we can already construct sentences of arbitrary length and complexity. However, you probably sense that something's missing. Where are the adjectives?
+The noun phrase at the root of an interrogative or imperative sentence often takes the form of an **interrogative phrase** followed by a declarative sentence:
+
+```
+NP -> IP DS
+```
+
+An **interrogative phrase** is either an interrogative pronoun `IPRN`, or a noun phrase with an interrogative determiner `IDET`.
+
+```
+IP -> IPRN
+IP -> IDET N/n NP{n}
+```
+
+With just these syntax rules, we can already construct sentences of arbitrary length and complexity. Something's missing, though. Where are the adjectives?
 
 ### Production rules, level 2
 
-Recall that OGTRTA does not have adjectives as a separate lexical class. However, its syntax does have a concept of **modifiers**. A verb phrase can modify a noun by following it:
+Recall that OGTRTA does not have adjectives as a separate lexical class. However, its syntax does have a concept of **modifiers**. A verb phrase can modify a noun by following it (either before or after any complements):
 
 ```
-NP -> DET? N VP
+NP -> DET? N/n VP NP{n} VP
 ```
 
 In fact, a noun can be modified by any number of VPs (zero or more), represented by `VP*`:
 
 ```
-NP -> DET? N VP*
+NP -> DET? N/n VP* NP{n} VP*
 ```
 
 Words that we think of as adjectives in English are zero-valence verbs in OGTRTA. 
@@ -115,18 +151,16 @@ Words that we think of as adjectives in English are zero-valence verbs in OGTRTA
 A noun phrase that includes a determiner can have zero-valence modifiers between the determiner and the noun:
 
 ```
-NP -> DET V_0* N VP*
+NP -> DET V/0* N/n VP* NP{n} VP*
 ```
 
 This rule is optional, though, and individual languages can safely leave it out.
 
-Verbs can also have modifiers. The syntax is slightly more complex because of the presence of complements:
+Verbs can also have modifiers, equivalent to adverbs in English.
 
 ```
-VP -> V_n VP* NP{n} VP*
+VP -> V/n VP* NP{n} VP*
 ```
-
-That is, a verb's modifiers should go before all the complements, or after all the complements. Putting them between the complements would be confusing! (Actually, this isn't a hard and fast rule; your language can certainly break it. But writing down that more general rule in formal language would be hard, and I feel like conlanging is hard enough already.)
 
 ### Production rules, level 3
 
@@ -170,15 +204,18 @@ And that's it! That's the entire syntax of OGTRTA.
 All together now:
 
 ```
-S -> VP.f NP.s
-S -> NP.s VP.f
-S -> S CONJ S
+S -> DS
+S -> NP
+DS -> VP.f NP.s
+DS -> NP.s VP.f
+DS -> S CONJ S
 VP.x -> V_n.x VP.m.a* NP.c{n} VP.m.a*
 VP.x -> VP.x CONJ VP.x
 NP.x -> PRN.x
 NP.x -> DET? N.x VP.m*
 NP.x -> DET V_0.m* N.x VP.m*
 NP.x -> NP.x CONJ NP.x
+NP.x -> IP DS
 ```
 
 Get that printed on a t-shirt. I'm sure it'll be a hit at parties.
@@ -215,7 +252,48 @@ As you can see, this gets more complicated the more genders and complements you 
 
 This is a sketch, not a formal description. It's hard to describe agreement tags precisely in any system less powerful than an actual programming language. But hopefully you get the idea. If not, don't worry about it. You don't need to know anything about agreement tags unless you, like me, need the security blanket of formality to keep those evil, messy WORDS safely away from you.
 
-## Determiners
+## Lexicon
+
+Now that we have covered syntax, let's move on to the other half of OGTRTA: the lexicon.
+
+For this section, we will have to introduce some glossing conventions:
+
+- A dash separates bound morphemes, e.g. `cabbage-PL` "cabbages"
+- A dot separates the constituent meanings of a fusional morpheme, e.g. `3.AN.PL` for the third person animate plural pronoun.
+- Underscores separate multiple words used to gloss a single morpheme, e.g. `what_kind_of`
+- The valence of a verb is indicated by a slash followed by a number, as in Erlang, e.g. `swim/0`, `eat/1`, `give/2`.
+- Abbreviations are in uppercase, e.g. `DEF` for the definite article, `PL` for plural, etc.
+
+### Null morphemes
+
+Any OGTRTA language may opt out of any morpheme or inflection, by realizing it as a [null morpheme](https://en.wikipedia.org/wiki/Null_morpheme). For example, let's say you wanted your language to have a Celtic-style "genitive of juxtaposition," where to refer to a noun and its possessor you just put the two nouns next to each other. At first, it might seem like OGTRTA can't do this, because nouns cannot directly modify other nouns; only verbs can.
+
+But there is a workaround: use a genitive verb `GEN/1` which is realized as null. So:
+
+  **trymped y brenin**<br>
+  `trymped ∅     y   brenin`<br>
+  `trumpet GEN/1 DEF king`<br>
+  _the king's trumpet_
+
+Another trick lets you use genitive-case nouns as modifiers, as in German:
+
+  **die Räder des Busses**<br>
+  `die        räder    ∅     des          busses`<br>
+  `DEF.NEU.PL wheel-PL GEN/1 DEF.MASC.GEN bus-GEN`<br>
+  _the wheels of the bus_
+
+Here we suppose there is a verb `GEN/1` which governs the genitive case (a constraint that can be expressed via tags) and is realized as null.
+
+When you think OGTRTA can't do something, often it can — you just have to add some null morphemes until the syntax tree is happy. But beware: the more null morphemes you add, the more ambiguous the language (generally) gets.
+
+### Determiners
+
+- Do articles agree in number, case, or gender with their noun?
+- Does the language have definite and indefinite articles?
+- Are demonstratives (_this_, _that_) determiners, or verbs?
+- Are possessives (_my_, _your_) determiners, or verbs?
+- Are the quantifiers _any_, _all_, _no_ determiners, or are they expressed periphrastically as nouns, e.g. _all of the stars_, _none of the stars_?
+- Do the interrogative determiners _which_, _whose_ exist, or are they expressed periphrastically?
 
 ### Articles
 
